@@ -1,0 +1,342 @@
+{
+  "Metadata": {
+    "title": "Grow Foundation | Growing People, Creating Opportunities in North Lebanon",
+    "description": "A Tripoli-based social enterprise cultivating sustainable human capabilities, institutional resilience, and community-driven economic empowerment across Northern Lebanon.",
+    "ogTitle": "Grow Foundation — Growing People. Creating Opportunities. Shaping Tomorrow.",
+    "ogDescription": "A Tripoli-based social enterprise cultivating sustainable human capabilities, institutional resilience, and community-driven economic empowerment across Northern Lebanon."
+  },
+  "Common": {
+    "brand": "GROW",
+    "brandSubtitle": "Foundation Tripoli",
+    "logoAlt": "Grow Foundation logo",
+    "homeLink": "Grow Foundation home",
+    "skipToContent": "Skip to main content",
+    "primaryNavigation": "Primary navigation",
+    "language": {
+      "label": "Language",
+      "english": "EN",
+      "arabic": "العربية",
+      "switchToEnglish": "Switch to English",
+      "switchToArabic": "Switch to Arabic"
+    },
+    "menu": {
+      "open": "Open menu",
+      "close": "Close menu",
+      "label": "Site menu"
+    },
+    "whatsappAria": "Chat with Grow Foundation on WhatsApp"
+  },
+  "Navigation": {
+    "about": "About",
+    "impact": "Our Impact",
+    "ecosystem": "Our Ecosystem",
+    "partners": "Partners",
+    "contact": "Contact",
+    "growPlus": "Grow Plus",
+    "growForYouth": "Grow for Youth",
+    "growPlusAria": "Explore Grow Plus, the institutional arm",
+    "growForYouthAria": "Explore Grow for Youth, the community arm"
+  },
+  "Hero": {
+    "badge": "Tripoli Social Innovation Hub • Est. 2024",
+    "titleLine1": "Growing People.",
+    "titleLine2": "Creating Opportunities.",
+    "titleLine3": "Shaping Tomorrow.",
+    "description": "A Tripoli-based social enterprise cultivating sustainable human capabilities, institutional resilience, and community-driven economic empowerment across Northern Lebanon.",
+    "primaryCta": "Explore Grow Plus",
+    "secondaryCta": "Explore Grow for Youth",
+    "stats": {
+      "youth": {
+        "label": "[Youth Reached]",
+        "value": "1,400+",
+        "detail": "Empowered directly"
+      },
+      "institutions": {
+        "label": "[Institutions]",
+        "value": "45+",
+        "detail": "Strengthened in field"
+      },
+      "programs": {
+        "label": "[Programs]",
+        "value": "12+",
+        "detail": "Active across Tripoli"
+      }
+    },
+    "imageAlt": "A dynamic documentary photograph inside a sunlit stone workshop in Tripoli, Lebanon. Young Lebanese architects, community organizers, and social entrepreneurs gather around a large drafting table with architectural models, digital tablets, and city blueprints. Sunlight pours through stone arches, creating a warm golden-hour glow with deep green and terracotta accents.",
+    "caption": {
+      "eyebrow": "Collaborative Lab",
+      "title": "The Tripoli Studio for Public Good",
+      "description": "Youth & civic leaders co-designing neighborhood renewal projects at Al-Mina."
+    },
+    "credential": {
+      "title": "Grassroots Grounded",
+      "subtitle": "Registered Social Enterprise"
+    }
+  },
+  "About": {
+    "overline": "Architectural Agency",
+    "title": "Where Grassroots Energy Meets Institutional Excellence",
+    "description": "Grow Foundation re-engineers how social development functions in Lebanon—combining agile community empowerment with rigorous institutional consulting.",
+    "pillarsTitle": "Five Foundational Pillars",
+    "pillarsDescription": "Our interventions do not exist in silos. Every program, workshop, and advisory mandate operates at the strategic intersection of five transformative disciplines:",
+    "pillars": {
+      "humanDevelopment": {
+        "title": "Human Development",
+        "description": "Equipping local talent with critical reasoning, vocational agility, and modern creative leadership skills."
+      },
+      "economicEmpowerment": {
+        "title": "Economic Empowerment",
+        "description": "Fostering micro-business creation, market linkage, and dignified livelihood avenues for Tripoli youth."
+      },
+      "communityDevelopment": {
+        "title": "Community Development",
+        "description": "Restoring public spaces, mobilizing neighborhood civic committees, and championing local identity."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "Driving circular economy initiatives, renewable energy access, and green urban planning practices."
+      },
+      "socialInnovation": {
+        "title": "Social Innovation",
+        "description": "Incubating experimental grassroots civic-tech experiments and participatory governance pilots tailored for Northern Lebanon's socio-economic fabric."
+      }
+    },
+    "banner": {
+      "eyebrow": "Locally Rooted Enterprise",
+      "title": "Self-sustaining civil society models for Lebanon",
+      "cta": "View our dual structure"
+    },
+    "imageAlt": "Editorial portrait of a confident young Lebanese female program leader standing in a bright creative collaborative office in Tripoli, Lebanon. She is holding a sketchbook and smiling warmly, with arched Mediterranean windows overlooking the warm limestone cityscape in the background. Natural soft lighting, terracotta and dark green earthy tones.",
+    "imageBadge": "Tripoli Field Lead • Youth Cohort 2024",
+    "quoteEyebrow": "Leadership Principle",
+    "quote": "“Real impact begins when community leadership meets institutional rigor.”",
+    "quoteAttribution": "Grow Foundation Core Methodology"
+  },
+  "VisionMission": {
+    "overline": "Purpose & Trajectory",
+    "title": "Built for Endurance. Driven by Clarity.",
+    "vision": {
+      "badge": "Our Vision",
+      "title": "A Self-Determining & Resilient North Lebanon",
+      "statementLabel": "[Official Vision Statement]",
+      "statement": "“To cultivate a thriving, resilient Northern Lebanon where youth, women, and civic institutions lead sustainable socio-economic transformation, establishing decentralized pathways of dignity, self-reliance, and collaborative progress.”",
+      "horizon": "Long-Term 2030 Horizon",
+      "status": "Framework Verified"
+    },
+    "mission": {
+      "badge": "Our Mission",
+      "title": "Bridging Capability Gaps with Precision",
+      "statementLabel": "[Official Mission Statement]",
+      "statement": "“Grow Foundation bridges human capability gaps by designing high-impact capacity building, fostering civic entrepreneurship, and deploying community-centered solutions that turn local challenges into enduring opportunities.”",
+      "mandate": "Active Operational Mandate",
+      "status": "Triple-Pillar Model"
+    }
+  },
+  "Impact": {
+    "overline": "Documented Evidence",
+    "title": "Measured In Human Dignity & Institutional Endurance",
+    "description": "Transparent metrics validated across our training incubators, municipal collaborations, and youth-led green interventions in Tripoli and the North.",
+    "metrics": {
+      "training": {
+        "label": "[Impact Metric 01]",
+        "value": "1,200+",
+        "title": "Young Innovators & Entrepreneurs Trained",
+        "description": "Graduated across vocational, digital design, and green entrepreneurship bootcamps."
+      },
+      "mentoring": {
+        "label": "[Impact Metric 02]",
+        "value": "48",
+        "title": "Civil Society & Micro-Enterprises Mentored",
+        "description": "Strengthened via institutional advisory, governance frameworks, and operational audits."
+      },
+      "sustainability": {
+        "label": "[Impact Metric 03]",
+        "value": "35+",
+        "title": "Community & Urban Sustainability Initiatives",
+        "description": "Direct neighborhood interventions including public greening, solar hubs, and waste pilots."
+      },
+      "continuity": {
+        "label": "[Impact Metric 04]",
+        "value": "85%",
+        "title": "Program Continuity & Employment Rate",
+        "description": "[Future Verified Metric: Participant Employment & Enterprise Continuity Rate measured at 12 mos.]"
+      }
+    },
+    "assurance": {
+      "title": "Governance & Transparency Assurance",
+      "description": "All metrics reflect independently audited, community-verified milestones. Data collected under strict monitoring protocols.",
+      "cta": "Download Annual Report [Editable Link]"
+    }
+  },
+  "Ecosystem": {
+    "overline": "Dual-Engine Social Enterprise",
+    "title": "The Two Arms of Grow Foundation",
+    "description": "Explore our interconnected structure: an institutional arm designed for strategic endurance, and a community arm igniting youth-led agency.",
+    "viewLabel": "Choose ecosystem view",
+    "views": {
+      "all": "Side-by-Side Dual View",
+      "plus": "Grow Plus (Institutional)",
+      "youth": "Grow for Youth (Community)"
+    },
+    "plus": {
+      "badge": "Grow Plus • Institutional Arm",
+      "mandate": "Mandate 01",
+      "title": "Strategic Capability, Governance & Systems Transformation",
+      "description": "Grow Plus serves civil society organizations, social enterprises, municipal bodies, and expanding local businesses. We provide high-caliber advisory, organizational structuring, and executive capacity building that ensures institutions survive and scale during volatility.",
+      "focusLabel": "Key Focus Areas:",
+      "tags": {
+        "institutionalDevelopment": "Institutional Development",
+        "trainingConsulting": "Training & Consulting",
+        "capacityBuilding": "Capacity Building",
+        "leadershipDevelopment": "Leadership Development",
+        "entrepreneurship": "Entrepreneurship",
+        "digitalTransformation": "Digital Transformation",
+        "organizationalSustainability": "Organizational Sustainability"
+      },
+      "retention": {
+        "label": "Institutional Retention Rate",
+        "value": "92%",
+        "description": "Over 45 organizations operating sustainably past 24-month monitoring periods."
+      },
+      "cta": "Explore Grow Plus Institutional Hub"
+    },
+    "youth": {
+      "badge": "Grow for Youth • Community Arm",
+      "mandate": "Mandate 02",
+      "title": "Youth Agency, Women Empowerment & Urban Greening",
+      "description": "Grow for Youth activates the grassroots vitality of Tripoli. Through participatory neighborhood planning, civic hackathons, ecological workshops, and leadership accelerators, we transform youth passion into measurable civic capital.",
+      "focusLabel": "Key Focus Areas:",
+      "tags": {
+        "youthEmpowerment": "Youth Empowerment",
+        "womensEmpowerment": "Women's Empowerment",
+        "volunteering": "Volunteering & Opportunities",
+        "environmental": "Environmental Initiatives",
+        "participation": "Community Participation",
+        "innovation": "Local Innovation"
+      },
+      "imageAlt": "Young Lebanese youth and volunteers participating in an outdoor urban greening workshop in an ancient Tripoli limestone courtyard. Smiling young men and women in dark green shirts hold plant seedlings and collaborate over a printed urban planning map on a wooden table, surrounded by lush potted greenery, historic arches, and minarets under sunny Mediterranean skies.",
+      "imageCaption": "Urban Greening Workshop • Tripoli Old Town",
+      "cta": "Discover Grow for Youth Programs"
+    }
+  },
+  "Partners": {
+    "overline": "Strategic Alliances",
+    "title": "Institutional Partners & Civic Collaborators",
+    "description": "Building cross-sector alliances to foster enduring civic infrastructure and economic dignity in Tripoli and beyond.",
+    "items": {
+      "anera": {
+        "name": "ANERA",
+        "organisation": "American Near East Refugee Aid — humanitarian relief and sustainable development across Lebanon."
+      },
+      "iocc": {
+        "name": "IOCC",
+        "organisation": "International Orthodox Christian Charities — emergency relief, food security and livelihood recovery."
+      },
+      "irada": {
+        "name": "Irada",
+        "organisation": "Federation of Businessmen for Support and Development — a national network linking Lebanese professionals and enterprises."
+      },
+      "oxfam": {
+        "name": "Oxfam in Lebanon",
+        "organisation": "Oxfam in Lebanon — humanitarian and development work on economic justice, gender equality and emergency response since 1993."
+      },
+      "utopia": {
+        "name": "Utopia",
+        "organisation": "Utopia Association — Tripoli-based civil society organisation advancing social justice, inclusion and climate action."
+      },
+      "localCsos": {
+        "name": "Local CSOs & SMEs",
+        "organisation": "Grassroots civil society organisations and small businesses co-designing and delivering GROW programmes in Tripoli."
+      }
+    },
+    "visitWebsite": "Visit website",
+    "endorsement": {
+      "question": "Interested in forging a program partnership or co-funding a Tripoli initiative?",
+      "cta": "Explore Partnership Inquiries"
+    }
+  },
+  "ClosingCta": {
+    "badge": "Co-Creation Gateway",
+    "title": "Ready to Co-Create Sustainable Impact in Tripoli?",
+    "description": "Whether you are an international development organization looking for verified local partners, or a passionate civic changemaker in Lebanon, there is an active seat at our table.",
+    "primaryCta": "Partner With Grow Foundation",
+    "secondaryCta": "Join Community Initiatives",
+    "contact": {
+      "title": "Connect With Grow Foundation",
+      "description": "Our doors are open for partnership, site visits, and community proposals in Tripoli.",
+      "address": {
+        "label": "Visit us",
+        "value": "Azmi Street, Tripoli, Lebanon"
+      },
+      "phone": {
+        "label": "Call us",
+        "value": "+961 03 598 903"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "value": "+961 03 598 903"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "value": "@growfoundation20"
+      },
+      "facebook": {
+        "label": "Facebook",
+        "value": "Grow Foundation"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "Grow Foundation 20"
+      }
+    }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has moved.",
+    "cta": "Return to the homepage"
+  },
+  "Footer": {
+    "description": "Grow Foundation is a Tripoli-based social enterprise dedicated to sustainable human development, institutional progress, and community-driven economic empowerment across Lebanon.",
+    "socialTitle": "Social media",
+    "social": {
+      "whatsapp": "WhatsApp",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "facebook": "Facebook"
+    },
+    "explore": {
+      "title": "Explore",
+      "about": "About Us",
+      "missionVision": "Mission & Vision",
+      "impact": "Our Impact",
+      "ecosystem": "Tripoli Ecosystem",
+      "news": "News & Stories"
+    },
+    "arms": {
+      "title": "Our Two Arms",
+      "plusTitle": "Grow Plus",
+      "plusDescription": "Institutional Development, Consulting, Capacity Building",
+      "youthTitle": "Grow for Youth",
+      "youthDescription": "Youth & Women Empowerment, Social Innovation, Volunteer Initiatives"
+    },
+    "collaboration": {
+      "title": "Collaboration & Partners",
+      "institutionalPartners": "Institutional Partners",
+      "civicAlliances": "Civic Alliances",
+      "becomeMentor": "Become a Mentor",
+      "grantsSupport": "Grants & Support"
+    },
+    "location": {
+      "name": "Azmi Street, Tripoli",
+      "city": "Lebanon",
+      "phone": "+961 03 598 903"
+    },
+    "legal": {
+      "copyright": "Copyright © Grow Foundation. All rights reserved.",
+      "registered": "Registered Social Enterprise in Lebanon.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "transparency": "Transparency Charter"
+    }
+  }
+}
