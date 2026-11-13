@@ -6,6 +6,7 @@ import { Icon } from '@/components/ui/Icon';
 import { Overline } from '@/components/ui/Overline';
 import { pillars } from '@/features/home/data/content';
 import { IMAGES, SECTION_IDS } from '@/lib/constants';
+import { reveal, staggerItem } from '@/lib/motion';
 
 export async function AboutSection() {
   const t = await getTranslations('About');
@@ -18,6 +19,7 @@ export async function AboutSection() {
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <svg
+          {...reveal({ variant: 'fade-in', delay: 120 })}
           className="absolute end-0 top-12 h-96 w-96 text-brand-dark-green/10"
           viewBox="0 0 200 200"
           fill="none"
@@ -34,18 +36,26 @@ export async function AboutSection() {
 
       <Container className="relative">
         <div className="mb-space-2xl flex flex-col justify-between gap-space-md md:flex-row md:items-end">
-          <div className="max-w-2xl">
+          <div {...reveal()} className="max-w-2xl">
             <Overline className="text-brand-dark-green">{t('overline')}</Overline>
             <h2 id="about-title" className="mt-space-xs font-display text-headline-xl text-brand-text">
               {t('title')}
             </h2>
           </div>
-          <p className="max-w-md font-body text-body-lg text-brand-text/80">{t('description')}</p>
+          <p
+            {...reveal({ delay: 110 })}
+            className="max-w-md font-body text-body-lg text-brand-text/80"
+          >
+            {t('description')}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 items-stretch gap-gutter-lg lg:grid-cols-12">
           <div className="flex flex-col justify-between gap-space-md lg:col-span-7">
-            <div className="rounded-3xl border border-brand-bg-alt bg-brand-white p-space-xl shadow-sm">
+            <div
+              {...reveal({ delay: 90 })}
+              className="rounded-3xl border border-brand-bg-alt bg-brand-white max-sm:p-space-md sm:p-space-xl shadow-sm"
+            >
               <div className="mb-space-md flex items-center gap-space-sm">
                 <span aria-hidden="true" className="h-3 w-3 rounded-full bg-brand-dark-orange" />
                 <h3 className="font-display text-headline-md text-brand-text">{t('pillarsTitle')}</h3>
@@ -55,9 +65,10 @@ export async function AboutSection() {
               </p>
 
               <div className="grid grid-cols-1 gap-space-md sm:grid-cols-2">
-                {pillars.map((pillar) => (
+                {pillars.map((pillar, index) => (
                   <div
                     key={pillar.id}
+                    {...staggerItem(index, { delay: 60 })}
                     className={`rounded-2xl border border-brand-bg-alt bg-brand-bg p-space-md transition-colors hover:bg-brand-bg-alt ${
                       pillar.id === 'socialInnovation' ? 'sm:col-span-2' : ''
                     }`}
@@ -76,7 +87,10 @@ export async function AboutSection() {
               </div>
             </div>
 
-            <div className="flex flex-col items-start justify-between gap-space-md rounded-2xl bg-brand-dark-green p-space-lg text-brand-white sm:flex-row sm:items-center">
+            <div
+              {...reveal({ variant: 'slide-left', delay: 160 })}
+              className="flex flex-col items-start justify-between gap-space-md rounded-2xl bg-brand-dark-green p-space-lg text-brand-white sm:flex-row sm:items-center"
+            >
               <div>
                 <div className="font-body text-label-sm font-bold uppercase tracking-widest text-brand-light-green">
                   {t('banner.eyebrow')}

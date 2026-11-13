@@ -25,8 +25,6 @@ export function MobileNavigation() {
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
     panelRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -63,7 +61,6 @@ export function MobileNavigation() {
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [open]);
@@ -83,7 +80,7 @@ export function MobileNavigation() {
       </button>
 
       {open ? (
-        <div className="absolute inset-x-0 top-20 z-40 h-[calc(100dvh-5rem)] xl:hidden">
+        <div className="fixed inset-x-0 top-20 bottom-0 z-[60] xl:hidden">
           <button
             type="button"
             tabIndex={-1}
@@ -98,7 +95,7 @@ export function MobileNavigation() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="mobile-navigation-title"
-            className="absolute inset-y-0 end-0 flex w-full max-w-sm flex-col overflow-y-auto bg-brand-bg p-space-lg shadow-2xl"
+            className="absolute inset-y-0 end-0 flex h-screen w-full max-w-sm flex-col bg-brand-bg p-space-lg shadow-2xl"
           >
             <div className="flex items-center justify-between gap-space-md border-b border-brand-bg-alt pb-space-md">
               <h2

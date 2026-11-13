@@ -11,7 +11,7 @@ export function EcosystemYouthPanel() {
   const t = useTranslations('Ecosystem.youth');
 
   return (
-    <article className="flex flex-col justify-between rounded-3xl border border-brand-bg-alt bg-brand-white p-space-xl shadow-sm md:p-space-2xl">
+    <article className="flex flex-col justify-between rounded-3xl border border-brand-bg-alt bg-brand-white max-sm:p-space-md sm:p-space-xl shadow-sm md:p-space-2xl">
       <div>
         <div className="mb-space-lg flex items-center justify-between gap-space-md">
           <div className="inline-flex items-center gap-space-xs rounded-full bg-brand-bg-alt px-3.5 py-1.5 font-body text-label-md font-bold text-brand-dark-orange">

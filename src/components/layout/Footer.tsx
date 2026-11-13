@@ -11,6 +11,7 @@ import {
 } from '@/features/home/data/navigation';
 import { socialLinks } from '@/features/home/data/social';
 import { CONTACT_LINKS, IMAGES } from '@/lib/constants';
+import { reveal } from '@/lib/motion';
 
 export async function Footer() {
   const t = await getTranslations('Footer');
@@ -20,7 +21,7 @@ export async function Footer() {
     <footer className="w-full border-t border-brand-bg-alt bg-brand-bg-alt pb-space-xl pt-space-3xl text-brand-text">
       <Container>
         <div className="grid grid-cols-1 gap-x-gutter-lg gap-y-space-2xl pb-space-2xl md:grid-cols-2 lg:grid-cols-12">
-          <div className="flex flex-col items-start lg:col-span-4">
+          <div {...reveal()} className="flex flex-col items-start lg:col-span-4">
             <div className="mb-space-md flex items-center gap-space-sm">
               <ResilientImage
                 src={IMAGES.logo}
@@ -51,7 +52,11 @@ export async function Footer() {
             </nav>
           </div>
 
-          <nav aria-label={t('explore.title')} className="flex flex-col lg:col-span-2">
+          <nav
+            aria-label={t('explore.title')}
+            {...reveal({ delay: 110 })}
+            className="flex flex-col lg:col-span-2"
+          >
             <h3 className="mb-space-md font-display text-headline-sm font-bold text-brand-text">
               {t('explore.title')}
             </h3>
@@ -66,7 +71,7 @@ export async function Footer() {
             </ul>
           </nav>
 
-          <div className="flex flex-col lg:col-span-3">
+          <div {...reveal({ delay: 220 })} className="flex flex-col lg:col-span-3">
             <h3 className="mb-space-md font-display text-headline-sm font-bold text-brand-text">
               {t('arms.title')}
             </h3>
@@ -90,7 +95,7 @@ export async function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:col-span-3">
+          <div {...reveal({ delay: 330 })} className="flex flex-col lg:col-span-3">
             <h3 className="mb-space-md font-display text-headline-sm font-bold text-brand-text">
               {t('collaboration.title')}
             </h3>
@@ -124,7 +129,10 @@ export async function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-space-md rounded-xl border border-brand-bg-alt bg-brand-white px-space-lg py-space-md font-body text-body-sm text-brand-text/75 md:flex-row">
+        <div
+          {...reveal({ delay: 140 })}
+          className="flex flex-col items-center justify-between gap-space-md rounded-xl border border-brand-bg-alt bg-brand-white px-space-lg py-space-md font-body text-body-sm text-brand-text/75 md:flex-row"
+        >
           <div className="flex flex-wrap items-center justify-center gap-space-xs text-center md:justify-start md:text-start">
             <span>{t('legal.copyright')}</span>
             <span aria-hidden="true" className="hidden md:inline">

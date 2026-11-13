@@ -2,7 +2,9 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import { HeroActions } from "@/features/home/components/HeroActions";
+import { HeroImageReveal } from "@/features/home/components/HeroImageReveal";
 import { HERO_LAYER_IMAGES } from "@/lib/constants";
+import { enter } from "@/lib/motion";
 
 export async function HeroSection() {
   const t = await getTranslations("Hero");
@@ -14,7 +16,10 @@ export async function HeroSection() {
     >
       <div className="mx-auto w-full max-w-350 px-margin md:px-margin-md lg:px-margin-lg">
         <div className="mb-space-lg flex flex-wrap items-center justify-between gap-space-sm">
-          <div className="inline-flex items-center gap-space-xs rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green">
+          <div
+            {...enter({ delay: 80 })}
+            className="inline-flex items-center gap-space-xs rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
+          >
             <span
               aria-hidden="true"
               className="h-2 w-2 animate-ping rounded-full bg-brand-dark-green"
@@ -30,6 +35,7 @@ export async function HeroSection() {
             <div className="relative">
               <h1
                 id="hero-title"
+                {...enter({ delay: 200 })}
                 className="mb-space-lg font-display text-headline-xl leading-[1.08] tracking-tight text-brand-text md:text-display-hero"
               >
                 {t("titleLine1")} <br />
@@ -41,7 +47,10 @@ export async function HeroSection() {
               </h1>
             </div>
 
-            <p className="mb-space-xl max-w-xl font-body text-body-xl leading-relaxed text-brand-text/80">
+            <p
+              {...enter({ delay: 340 })}
+              className="mb-space-xl max-w-xl font-body text-body-xl leading-relaxed text-brand-text/80"
+            >
               {t("description")}
             </p>
 
@@ -72,20 +81,25 @@ export async function HeroSection() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-165 aspect-1099/941 w-165 z-0 max-[850px]:relative max-[850px]:right-default max-[850px]:bottom-auto xl:px-4 max-[850px]:left-auto xl:left-auto xl:right-0 max-[850px]:w-[80vw] max-[850px]:m-auto"
+        className="hero-layers pointer-events-none absolute bottom-0 left-165 aspect-1099/941 w-165 z-0 max-[850px]:relative max-[850px]:right-default max-[850px]:bottom-auto xl:px-4 max-[850px]:left-auto xl:left-auto xl:right-0 max-[850px]:w-[80vw] max-[850px]:m-auto"
       >
-        {HERO_LAYER_IMAGES.map((src) => (
-          <Image
-            key={src}
-            src={src}
-            alt=""
-            fill
-            unoptimized
-            sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 40vw, (min-width: 640px) 56vw, 74vw"
-            className="object-contain"
-          />
-        ))}
+        {HERO_LAYER_IMAGES.map((src) => {
+          const layer = Number(src.replace(/\D/g, ""));
+
+          return (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              fill
+              unoptimized
+              sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 40vw, (min-width: 640px) 56vw, 74vw"
+              className={`hero-layer hero-layer-${layer} object-contain`}
+            />
+          );
+        })}
       </div>
+      <HeroImageReveal />
     </section>
   );
 }

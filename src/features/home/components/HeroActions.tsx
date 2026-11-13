@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/Button";
 import { SECTION_IDS } from "@/lib/constants";
+import { staggerContainer } from "@/lib/motion";
 
 import { useEcosystem } from "./EcosystemProvider";
 
@@ -12,7 +13,10 @@ export function HeroActions() {
   const { setView } = useEcosystem();
 
   return (
-    <div className="mb-space-2xl grid grid-cols-2 flex-wrap items-center gap-space-md w-auto max-sm:grid-cols-1 max-[420px]:w-full">
+    <div
+      {...staggerContainer}
+      className="mb-space-2xl grid grid-cols-2 flex-wrap items-center gap-space-md w-auto max-sm:grid-cols-1 max-[420px]:w-full"
+    >
       <Button
         href={`#${SECTION_IDS.ecosystem}`}
         variant="green"

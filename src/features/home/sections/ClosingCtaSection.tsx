@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
 import { CONTACT_LINKS, SECTION_IDS } from '@/lib/constants';
+import { reveal } from '@/lib/motion';
 import type { MaterialIconName } from '@/types';
 
 type ContactItemId =
@@ -81,12 +82,21 @@ export async function ClosingCtaSection() {
   return (
     <section id={SECTION_IDS.contact} aria-labelledby="closing-cta-title" className="w-full bg-brand-bg-alt py-space-3xl">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl bg-brand-dark-green p-space-2xl text-brand-white shadow-xl md:p-space-3xl">
-          <div className="pointer-events-none absolute end-0 top-0 h-96 w-96 rounded-full bg-brand-dark-orange/20 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-0 start-0 h-96 w-96 rounded-full bg-brand-light-green/30 blur-3xl" />
+        <div
+          {...reveal({ variant: 'fade-in' })}
+          className="relative overflow-hidden rounded-3xl bg-brand-dark-green max-sm:p-space-lg sm:p-space-2xl text-brand-white shadow-xl md:p-space-3xl"
+        >
+          <div
+            {...reveal({ variant: 'fade-in', delay: 90 })}
+            className="pointer-events-none absolute end-0 top-0 h-96 w-96 rounded-full bg-brand-dark-orange/20 blur-3xl"
+          />
+          <div
+            {...reveal({ variant: 'fade-in', delay: 180 })}
+            className="pointer-events-none absolute bottom-0 start-0 h-96 w-96 rounded-full bg-brand-light-green/30 blur-3xl"
+          />
 
           <div className="relative z-10 grid grid-cols-1 items-center gap-gutter-lg lg:grid-cols-12">
-            <div className="lg:col-span-7">
+            <div {...reveal({ delay: 100 })} className="lg:col-span-7">
               <div className="mb-space-md inline-flex items-center gap-2 rounded-full bg-brand-white/15 px-3 py-1 font-body text-label-sm font-bold uppercase tracking-wider text-brand-white">
                 <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand-light-green" />
                 <span>{t('badge')}</span>
@@ -126,7 +136,10 @@ export async function ClosingCtaSection() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="rounded-2xl border border-brand-white/10 bg-brand-text/85 p-space-xl text-brand-white shadow-lg backdrop-blur-md">
+              <div
+                {...reveal({ variant: 'slide-right', delay: 180 })}
+                className="rounded-2xl border border-brand-white/10 bg-brand-text/85 p-space-xl text-brand-white shadow-lg backdrop-blur-md"
+              >
                 <div className="mb-space-sm font-display text-headline-sm text-brand-white">
                   {t('contact.title')}
                 </div>

@@ -13,11 +13,12 @@
 
   --spacing-space-xs: 0.25rem;
   --spacing-space-sm: 0.5rem;
+  --spacing-space-sm-max: 0.75rem;
   --spacing-space-md: 1rem;
   --spacing-space-lg: 1.5rem;
   --spacing-space-xl: 2.5rem;
   --spacing-space-2xl: 4rem;
-  --spacing-space-3xl: 6rem;
+  --spacing-space-3xl: 4rem;
   --spacing-margin: 1.5rem;
   --spacing-margin-md: 3rem;
   --spacing-margin-lg: 5rem;
@@ -147,13 +148,24 @@ html[lang="ar"] {
     padding: 0;
   }
 
+  html {
+    width: 100%;
+    /* Horizontal reveals never create a scrollbar while they play. */
+    overflow-x: clip;
+  }
+
   body {
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
     background-color: var(--color-brand-bg);
     color: var(--color-brand-text);
     font-family: var(--font-body-app);
     overscroll-behavior: none;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Horizontal reveals never create a scrollbar while they play. */
+    overflow-x: clip;
   }
 
   h1,
@@ -219,5 +231,477 @@ html[lang="ar"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* sm and above: restore full large-section spacing. */
+@media (min-width: 640px) {
+  :root {
+    --spacing-space-3xl: 6rem;
+  }
+}
+
+/* Ultra-small screens: keep type and gutters proportional below 300px. */
+@media (max-width: 299.98px) {
+  :root {
+    --spacing-margin: 0.75rem;
+    --spacing-gutter-lg: 1.25rem;
+    --spacing-space-3xl: 3rem;
+
+    --text-display-hero: 2rem;
+    --text-display-hero--line-height: 2.25rem;
+    --text-display-hero-mobile: 2rem;
+    --text-display-hero-mobile--line-height: 2.25rem;
+
+    --text-headline-xl: 1.6rem;
+    --text-headline-xl--line-height: 1.95rem;
+    --text-headline-xl-mobile: 1.6rem;
+    --text-headline-xl-mobile--line-height: 1.95rem;
+
+    --text-headline-lg: 1.35rem;
+    --text-headline-lg--line-height: 1.7rem;
+
+    --text-headline-md: 1.15rem;
+    --text-headline-md--line-height: 1.5rem;
+
+    --text-headline-sm: 1rem;
+    --text-headline-sm--line-height: 1.35rem;
+
+    --text-body-xl: 1rem;
+    --text-body-xl--line-height: 1.6rem;
+
+    --text-body-lg: 0.95rem;
+    --text-body-lg--line-height: 1.5rem;
+
+    --text-label-sm: 0.625rem;
+    --text-label-sm--line-height: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion system
+   ---------------------------------------------------------------------------
+   Reveals only animate `opacity` and `transform`, so they never trigger
+   layout. Everything is gated behind enhancements:
+
+   - `.js` is added to <html> by an inline head script before first paint, so
+     the hidden state never flashes for no-JS visitors.
+   - Reduced-motion users never receive the hidden state at all.
+   - `.reveal-fallback` (set by the head script if the app fails to boot)
+     restores any content that could otherwise stay hidden.
+--------------------------------------------------------------------------- */
+
+@keyframes grow-reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes grow-reveal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes grow-reveal-slide-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes grow-reveal-slide-right {
+  from {
+    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes grow-reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes grow-enter-scale {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Hero collage layers: cinematic entrance + ambient float. */
+@keyframes hero-layer-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--layer-x, 0px), var(--layer-y, 0px), 0)
+      scale(var(--layer-scale, 1));
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes hero-layer-float {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(var(--layer-float-x, 0px), var(--layer-float-y, 0px), 0);
+  }
+}
+
+/* Subtle hover feedback for individual hero layers. Uses independent transform
+   properties so it composes with, and never overrides, the existing entrance
+   and float transforms. */
+
+/* Safety net for a failed hydration/JS boot. */
+html.reveal-fallback [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+html.reveal-fallback .hero-layer {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveal ------------------------------------------------------- */
+  html.js [data-reveal] {
+    opacity: 0;
+  }
+
+  html.js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    animation-duration: 760ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-delay: var(--reveal-delay, 0ms);
+    animation-fill-mode: backwards;
+  }
+
+  html.js [data-reveal='fade-up'].is-revealed {
+    animation-name: grow-reveal-fade-up;
+  }
+
+  html.js [data-reveal='fade-in'].is-revealed {
+    animation-name: grow-reveal-fade-in;
+  }
+
+  html.js [data-reveal='slide-left'].is-revealed {
+    animation-name: grow-reveal-slide-left;
+  }
+
+  html.js [data-reveal='slide-right'].is-revealed {
+    animation-name: grow-reveal-slide-right;
+  }
+
+  html.js [data-reveal='scale'].is-revealed {
+    animation-name: grow-reveal-scale;
+  }
+
+  /* Page-load entrance --------------------------------------------------- */
+  html.js [data-enter] {
+    animation-duration: 800ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-delay: var(--enter-delay, 0ms);
+    animation-fill-mode: backwards;
+  }
+
+  html.js [data-enter='fade-up'] {
+    animation-name: grow-reveal-fade-up;
+  }
+
+  html.js [data-enter='fade-in'] {
+    animation-name: grow-reveal-fade-in;
+  }
+
+  html.js [data-enter='scale'] {
+    animation-name: grow-enter-scale;
+  }
+
+  /*
+   * Hero CTA group: children stagger in without wrappers. Kept to two items
+   * on purpose — this is the only load-staggered group on the site.
+   */
+  html.js [data-enter-group] > * {
+    animation-name: grow-reveal-fade-up;
+    animation-duration: 800ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: backwards;
+  }
+
+  html.js [data-enter-group] > :nth-child(1) {
+    animation-delay: 420ms;
+  }
+
+  html.js [data-enter-group] > :nth-child(2) {
+    animation-delay: 530ms;
+  }
+
+  /* Hold the collage hidden until after window load, then assemble it. */
+  html.js .hero-layer {
+    opacity: 0;
+  }
+
+  /* Hero collage: entrance + continuous, desynchronised float ------------- */
+  html.js.hero-loaded .hero-layer {
+    animation-name: hero-layer-enter, hero-layer-float;
+    animation-duration: var(--layer-duration, 1100ms), var(--layer-float-duration, 9s);
+    animation-delay:
+      var(--layer-delay, 0ms),
+      calc(
+        var(--layer-delay, 0ms) + var(--layer-duration, 1100ms) +
+          var(--layer-float-offset, 0ms)
+      );
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+    animation-fill-mode: both, none;
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+  }
+
+  /* The clock tower settles and stays static. */
+  html.js.hero-loaded .hero-layer-7 {
+    animation-name: hero-layer-enter;
+  }
+
+  /* Per-layer hover feedback: lifts while hovered, returns on leave. */
+  html.js.hero-loaded .hero-layer {
+    transition:
+      scale 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      translate 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html.js.hero-loaded .hero-layer.is-vibrating {
+    scale: 1.03;
+    translate: 0 -4px;
+  }
+}
+
+/* Hero collage staging -----------------------------------------------------
+   The twelve images assemble in three sequential reveal stages:
+
+     Stage 1 — characters (2, 4, 5, 6)
+     Stage 2 — clock tower and scenery shapes (3, 7, 8, 9)
+     Stage 3 — flying birds and remaining shapes (1, 10, 11, 12)
+
+   A stage may only begin once every entrance in the previous stage has
+   finished. The stage boundaries below are derived with max() from the very
+   same per-image delays and durations the animations use, so each stage waits
+   for the real end of the previous one instead of a guessed, possibly
+   overlapping offset. Retiming one image automatically moves the chain. */
+.hero-layers {
+  /* Stage 1 — characters. */
+  --l2-delay: 0ms;
+  --l2-duration: 800ms;
+  --l4-delay: 190ms;
+  --l4-duration: 750ms;
+  --l5-delay: 130ms;
+  --l5-duration: 700ms;
+  --l6-delay: 60ms;
+  --l6-duration: 700ms;
+
+  /* Stage 2 — clock tower and scenery shapes. */
+  --l3-delay: 150ms;
+  --l3-duration: 700ms;
+  --l7-delay: 0ms;
+  --l7-duration: 750ms;
+  --l8-delay: 50ms;
+  --l8-duration: 650ms;
+  --l9-delay: 100ms;
+  --l9-duration: 700ms;
+
+  /* Stage 3 — flying birds and remaining shapes. */
+  --l1-delay: 0ms;
+  --l1-duration: 900ms;
+  --l10-delay: 150ms;
+  --l10-duration: 700ms;
+  --l11-delay: 50ms;
+  --l11-duration: 750ms;
+  --l12-delay: 100ms;
+  --l12-duration: 750ms;
+
+  /* Stage 1 ends at 940ms — the last of images 2, 4, 5, 6. */
+  --stage-1-end: max(
+    calc(var(--l2-delay) + var(--l2-duration)),
+    calc(var(--l4-delay) + var(--l4-duration)),
+    calc(var(--l5-delay) + var(--l5-duration)),
+    calc(var(--l6-delay) + var(--l6-duration))
+  );
+  --stage-2-start: var(--stage-1-end);
+
+  /* Stage 2 ends at 1790ms — the last of images 3, 7, 8, 9. */
+  --stage-2-end: calc(
+    var(--stage-2-start) +
+      max(
+        calc(var(--l3-delay) + var(--l3-duration)),
+        calc(var(--l7-delay) + var(--l7-duration)),
+        calc(var(--l8-delay) + var(--l8-duration)),
+        calc(var(--l9-delay) + var(--l9-duration))
+      )
+  );
+  --stage-3-start: var(--stage-2-end);
+}
+
+/* Layer 1 — flying birds (stage 3, bottom → top). */
+.hero-layer-1 {
+  --layer-y: 35px;
+  --layer-delay: calc(var(--stage-3-start) + var(--l1-delay));
+  --layer-duration: var(--l1-duration);
+  --layer-float-x: 3px;
+  --layer-float-duration: 9s;
+  --layer-float-offset: 500ms;
+}
+
+/* Layer 2 — center girl, dark green hoodie (stage 1, bottom → top). */
+.hero-layer-2 {
+  --layer-y: 90px;
+  --layer-scale: 0.94;
+  --layer-delay: var(--l2-delay);
+  --layer-duration: var(--l2-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 6s;
+}
+
+/* Layer 3 — left green shape (stage 2, right → left). */
+.hero-layer-3 {
+  --layer-x: 70px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-2-start) + var(--l3-delay));
+  --layer-duration: var(--l3-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 8s;
+  --layer-float-offset: 200ms;
+}
+
+/* Layer 4 — hijab girl (stage 1, bottom → top). */
+.hero-layer-4 {
+  --layer-y: 85px;
+  --layer-scale: 0.94;
+  --layer-delay: var(--l4-delay);
+  --layer-duration: var(--l4-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 6.5s;
+  --layer-float-offset: 100ms;
+}
+
+/* Layer 5 — right man, black hoodie (stage 1, bottom → top). */
+.hero-layer-5 {
+  --layer-y: 90px;
+  --layer-scale: 0.94;
+  --layer-delay: var(--l5-delay);
+  --layer-duration: var(--l5-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 7s;
+  --layer-float-offset: 300ms;
+}
+
+/* Layer 6 — left man, white hoodie (stage 1, bottom → top). */
+.hero-layer-6 {
+  --layer-y: 90px;
+  --layer-scale: 0.94;
+  --layer-delay: var(--l6-delay);
+  --layer-duration: var(--l6-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 5.5s;
+  --layer-float-offset: 400ms;
+}
+
+/* Layer 7 — clock tower (stage 2, bottom → top, then static). */
+.hero-layer-7 {
+  --layer-y: 65px;
+  --layer-scale: 0.96;
+  --layer-delay: calc(var(--stage-2-start) + var(--l7-delay));
+  --layer-duration: var(--l7-duration);
+}
+
+/* Layer 8 — center orange shape (stage 2, bottom → top). */
+.hero-layer-8 {
+  --layer-y: 55px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-2-start) + var(--l8-delay));
+  --layer-duration: var(--l8-duration);
+  --layer-float-y: 3px;
+  --layer-float-duration: 8.5s;
+  --layer-float-offset: 600ms;
+}
+
+/* Layer 9 — center green shape (stage 2, bottom → top). */
+.hero-layer-9 {
+  --layer-y: 65px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-2-start) + var(--l9-delay));
+  --layer-duration: var(--l9-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 10s;
+}
+
+/* Layer 10 — small right yellow shape (stage 3, left → right). */
+.hero-layer-10 {
+  --layer-x: -35px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-3-start) + var(--l10-delay));
+  --layer-duration: var(--l10-duration);
+  --layer-float-y: 3px;
+  --layer-float-duration: 8s;
+  --layer-float-offset: 650ms;
+}
+
+/* Layer 11 — large right orange shape (stage 3, left → right). */
+.hero-layer-11 {
+  --layer-x: -65px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-3-start) + var(--l11-delay));
+  --layer-duration: var(--l11-duration);
+  --layer-float-y: -3px;
+  --layer-float-duration: 9.5s;
+  --layer-float-offset: 150ms;
+}
+
+/* Layer 12 — left orange shape (stage 3, right → left). */
+.hero-layer-12 {
+  --layer-x: 65px;
+  --layer-scale: 0.92;
+  --layer-delay: calc(var(--stage-3-start) + var(--l12-delay));
+  --layer-duration: var(--l12-duration);
+  --layer-float-y: 3px;
+  --layer-float-duration: 9s;
+  --layer-float-offset: 450ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero-layer {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }

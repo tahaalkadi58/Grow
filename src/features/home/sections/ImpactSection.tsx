@@ -5,6 +5,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Overline } from "@/components/ui/Overline";
 import { impactMetrics } from "@/features/home/data/content";
 import { SECTION_IDS } from "@/lib/constants";
+import { reveal, staggerItem } from "@/lib/motion";
 
 export async function ImpactSection() {
   const t = await getTranslations("Impact");
@@ -17,7 +18,7 @@ export async function ImpactSection() {
     >
       <Container>
         <div className="mb-space-2xl flex flex-col justify-between gap-space-lg md:flex-row md:items-end">
-          <div>
+          <div {...reveal()}>
             <Overline className="text-brand-light-green">
               {t("overline")}
             </Overline>
@@ -28,15 +29,19 @@ export async function ImpactSection() {
               {t("title")}
             </h2>
           </div>
-          <p className="max-w-md font-body text-body-md text-brand-white/75">
+          <p
+            {...reveal({ delay: 110 })}
+            className="max-w-md font-body text-body-md text-brand-white/75"
+          >
             {t("description")}
           </p>
         </div>
 
         <div className="mb-space-2xl grid grid-cols-1 gap-gutter-lg sm:grid-cols-2 lg:grid-cols-4">
-          {impactMetrics.map((metric) => (
+          {impactMetrics.map((metric, index) => (
             <article
               key={metric.id}
+              {...staggerItem(index)}
               className="flex flex-col justify-between rounded-3xl border border-brand-white/10 bg-brand-white/5 p-space-xl"
             >
               <div

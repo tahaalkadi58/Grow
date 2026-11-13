@@ -4,6 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
 import { Overline } from '@/components/ui/Overline';
 import { SECTION_IDS } from '@/lib/constants';
+import { reveal, staggerItem } from '@/lib/motion';
 
 export async function VisionMissionSection() {
   const t = await getTranslations('VisionMission');
@@ -30,7 +31,7 @@ export async function VisionMissionSection() {
       className="w-full bg-brand-bg py-space-3xl"
     >
       <Container>
-        <div className="mb-space-2xl max-w-xl">
+        <div {...reveal()} className="mb-space-2xl max-w-xl">
           <Overline className="text-brand-dark-orange">{t('overline')}</Overline>
           <h2
             id="vision-mission-title"
@@ -41,10 +42,11 @@ export async function VisionMissionSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-gutter-lg lg:grid-cols-2">
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <article
               key={card.id}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-brand-bg-alt bg-brand-bg-alt p-space-2xl shadow-sm"
+              {...staggerItem(index, { variant: 'scale', step: 140 })}
+              className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-brand-bg-alt bg-brand-bg-alt max-sm:p-space-md sm:p-space-2xl shadow-sm"
             >
               <div
                 aria-hidden="true"

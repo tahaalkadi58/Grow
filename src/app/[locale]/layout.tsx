@@ -13,6 +13,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { DecorativeBackground } from "@/components/shared/DecorativeBackground";
 import { routing } from "@/i18n/routing";
 
@@ -105,9 +106,17 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
+      suppressHydrationWarning
       className={`${syne.variable} ${tajawal.variable} ${surgena.variable}`}
     >
       <head>
+        {/* Runs before first paint so the reveal system never flashes content. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');window.setTimeout(function(){if(!document.documentElement.hasAttribute('data-reveal-ready')){document.documentElement.classList.add('reveal-fallback');}},8000);",
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -121,7 +130,7 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <body className="realtive bg-brand-bg font-body text-body-md text-brand-text antialiased">
+      <body className="relative bg-brand-bg font-body text-body-md text-brand-text antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <a
             href="#main-content"
@@ -133,6 +142,7 @@ export default async function LocaleLayout({
           <Header />
           {children}
           <Footer />
+          <ScrollReveal />
           <WhatsAppButton />
         </NextIntlClientProvider>
       </body>

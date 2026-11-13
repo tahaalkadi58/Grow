@@ -6,6 +6,7 @@ import { Container } from '@/components/ui/Container';
 import { Overline } from '@/components/ui/Overline';
 import { cn } from '@/lib/utils';
 import { SECTION_IDS } from '@/lib/constants';
+import { reveal } from '@/lib/motion';
 
 import { EcosystemPlusPanel } from '../components/EcosystemPlusPanel';
 import { EcosystemYouthPanel } from '../components/EcosystemYouthPanel';
@@ -30,7 +31,7 @@ export function EcosystemSection() {
       
 
       <Container className="relative">
-        <div className="mx-auto mb-space-xl max-w-2xl text-center">
+        <div {...reveal()} className="mx-auto mb-space-xl max-w-2xl text-center">
           <Overline className="text-brand-dark-green">{t('overline')}</Overline>
           <h2
             id="ecosystem-title"
@@ -41,6 +42,7 @@ export function EcosystemSection() {
           <p className="font-body text-body-lg text-brand-text/80">{t('description')}</p>
 
           <div
+            {...reveal({ delay: 130 })}
             role="group"
             aria-label={t('viewLabel')}
             className="mt-space-lg inline-flex flex-wrap items-center justify-center gap-1 rounded-2xl border border-brand-bg-alt bg-brand-white p-1.5 shadow-sm sm:flex-nowrap sm:rounded-full"
@@ -74,10 +76,16 @@ export function EcosystemSection() {
              'mx-auto max-w-3xl',
           )}
         >
-          <div className={cn(view === 'youth' && 'hidden')}>
+          <div
+            {...reveal({ variant: 'scale', delay: 70 })}
+            className={cn(view === 'youth' && 'hidden')}
+          >
             <EcosystemPlusPanel />
           </div>
-          <div className={cn(view === 'plus' && 'hidden')}>
+          <div
+            {...reveal({ variant: 'scale', delay: 70 })}
+            className={cn(view === 'plus' && 'hidden')}
+          >
             <EcosystemYouthPanel />
           </div>
         </div>
