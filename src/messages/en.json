@@ -39,9 +39,10 @@
   },
   "Hero": {
     "badge": "Tripoli Social Innovation Hub • Est. 2024",
-    "titleLine1": "Growing People.",
-    "titleLine2": "Creating Opportunities.",
-    "titleLine3": "Shaping Tomorrow.",
+    "titleLine1Start": "Every",
+    "titleGrowth": "Growth",
+    "titleLine2": "Begins With",
+    "titleLine3": "An Opportunity",
     "description": "A Tripoli-based social enterprise cultivating sustainable human capabilities, institutional resilience, and community-driven economic empowerment across Northern Lebanon.",
     "primaryCta": "Explore Grow Plus",
     "secondaryCta": "Explore Grow for Youth",

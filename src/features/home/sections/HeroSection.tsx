@@ -14,7 +14,7 @@ export async function HeroSection() {
       aria-labelledby="hero-title"
       className="relative z-10 w-full overflow-hidden bg-brand-bg pt-6"
     >
-      <div className="mx-auto w-full max-w-350 px-margin md:px-margin-md lg:px-margin-lg">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-margin md:px-margin-md lg:px-margin-lg">
         <div className="mb-space-lg flex flex-wrap items-center justify-between gap-space-sm">
           <div
             {...enter({ delay: 80 })}
@@ -36,12 +36,24 @@ export async function HeroSection() {
               <h1
                 id="hero-title"
                 {...enter({ delay: 200 })}
-                className="mb-space-lg font-display text-headline-xl leading-[1.08] tracking-tight text-brand-text md:text-display-hero"
+                className="mb-space-lg font-display text-headline-xl leading-[1.08] tracking-tight text-brand-dark-green md:text-display-hero"
               >
-                {t("titleLine1")} <br />
-                <span className="font-medium italic text-brand-dark-orange rtl:not-italic">
-                  {t("titleLine2")}
-                </span>{" "}
+                {t("titleLine1Start")}{" "}
+                <span className="hero-title-growth text-brand-dark-orange relative">
+                  <span
+                    aria-hidden="true"
+                    className="hero-growth-effect absolute -right-10 -top-4 w-16 bg-center bg-cover aspect-254/310"
+                    style={{ backgroundImage: "url(/hero/growth/effect.png)" }}
+                  ></span>
+                  <span
+                    aria-hidden="true"
+                    className="hero-growth-underline absolute right-0 bottom-0 w-full bg-center bg-cover aspect-2172/724"
+                    style={{ backgroundImage: "url(/hero/growth/underline.png)" }}
+                  ></span>
+                  {t("titleGrowth")}
+                </span>
+                <br />
+                {t("titleLine2")}
                 <br />
                 {t("titleLine3")}
               </h1>

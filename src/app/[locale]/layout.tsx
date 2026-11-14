@@ -42,6 +42,24 @@ const surgena = localFont({
   fallback: ["sans-serif"],
 });
 
+const Cimo = localFont({
+  src: "../fonts/CimoOne.otf",
+  weight: "600",
+  style: "normal",
+  variable: "--font-cimo",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
+const ink = localFont({
+  src: "../fonts/InkBrush.otf",
+  weight: "600",
+  style: "normal",
+  variable: "--font-ink",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
 type LocaleLayoutProps = {
   children: ReactNode;
   params: Promise<{ locale: string }>;
@@ -107,7 +125,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={dir}
       suppressHydrationWarning
-      className={`${syne.variable} ${tajawal.variable} ${surgena.variable}`}
+      className={`${syne.variable} ${tajawal.variable} ${surgena.variable} ${Cimo.variable} ${ink.variable}`}
     >
       <head>
         {/* Runs before first paint so the reveal system never flashes content. */}

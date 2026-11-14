@@ -220,6 +220,55 @@ html[lang="ar"] {
   letter-spacing: 0;
 }
 
+#hero-title {
+  font-family: var(--font-cimo), var(--font-heading-app) !important;
+  color: #20342c;
+  /* Green #20342C text with shapes revealed inside; shapes stay fixed on scroll. */
+  background-image:
+    linear-gradient(rgba(32, 52, 44, 0.8), rgba(32, 52, 44, 0.8)),
+    url("/images/shapes.svg");
+  background-size: 100vw 100vh, 100vw 100vh;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* "Growth" uses a dedicated font when provided; load it later and set --font-growth. */
+#hero-title .hero-title-growth {
+  font-family: var(--font-growth, var(--font-ink, var(--font-cimo), var(--font-heading-app))) !important;
+  font-size: 1.5em;
+  line-height: 0.95;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: var(--color-brand-dark-orange);
+  color: var(--color-brand-dark-orange);
+}
+
+/* Hero title accents: underline mask-reveal (L→R) and effect diagonal fade-in. */
+@keyframes hero-growth-underline-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes hero-growth-effect-reveal {
+  from {
+    opacity: 0;
+    transform: translate(-36px, 36px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -231,6 +280,14 @@ html[lang="ar"] {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  html.js .hero-growth-underline,
+  html.js .hero-growth-effect {
+    animation: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -504,6 +561,26 @@ html.reveal-fallback .hero-layer {
   html.js.hero-loaded .hero-layer.is-vibrating {
     scale: 1.03;
     translate: 0 -4px;
+  }
+
+  /* Hero "Growth" accents: wait for their images, then reveal in sync. */
+  html.js.hero-loaded:not(.hero-growth-ready) .hero-growth-underline {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  html.js.hero-loaded:not(.hero-growth-ready) .hero-growth-effect {
+    opacity: 0;
+    transform: translate(-36px, 36px);
+  }
+
+  html.js.hero-loaded.hero-growth-ready .hero-growth-underline {
+    animation: hero-growth-underline-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1)
+      900ms both;
+  }
+
+  html.js.hero-loaded.hero-growth-ready .hero-growth-effect {
+    animation: hero-growth-effect-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1)
+      1150ms both;
   }
 }
 

@@ -42,6 +42,21 @@ export function HeroImageReveal() {
 
       document.documentElement.classList.add("hero-loaded");
 
+      const growthImages = [
+        "/hero/growth/underline.png",
+        "/hero/growth/effect.png",
+      ].map((src) => {
+        const img = new Image();
+        img.src = src;
+        return img;
+      });
+
+      void waitForImages(growthImages).then(() => {
+        if (!cancelled) {
+          document.documentElement.classList.add("hero-growth-ready");
+        }
+      });
+
       if (!wrapper || images.length === 0) {
         return;
       }
