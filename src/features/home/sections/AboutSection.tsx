@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
+import { GalleryImageTrigger } from '@/components/shared/ImageGallery';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
 import { Overline } from '@/components/ui/Overline';
@@ -117,14 +118,20 @@ export async function AboutSection() {
           <div className="lg:col-span-5">
             <div className="flex h-full flex-col justify-between rounded-3xl border border-brand-bg-alt bg-brand-white p-3 shadow-sm">
               <div className="relative mb-space-md aspect-square overflow-hidden rounded-2xl bg-brand-bg-alt">
-                <Image
+                <GalleryImageTrigger
                   src={IMAGES.portrait}
-                  alt={t('imageAlt')}
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                />
-                <div className="absolute start-4 top-4 rounded-full bg-brand-white/90 px-3 py-1.5 font-body text-label-sm font-bold text-brand-dark-green shadow-sm backdrop-blur-md">
+                  ariaLabel={t('imageAlt')}
+                  className="relative block h-full w-full"
+                >
+                  <Image
+                    src={IMAGES.portrait}
+                    alt={t('imageAlt')}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                </GalleryImageTrigger>
+                <div className="pointer-events-none absolute start-4 top-4 z-10 rounded-full bg-brand-white/90 px-3 py-1.5 font-body text-label-sm font-bold text-brand-dark-green shadow-sm backdrop-blur-md">
                   {t('imageBadge')}
                 </div>
               </div>

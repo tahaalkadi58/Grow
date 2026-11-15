@@ -15,7 +15,7 @@ export async function HeroSection() {
       className="relative z-10 w-full overflow-hidden bg-brand-bg pt-6"
     >
       <div className="relative z-10 mx-auto w-full max-w-350 px-margin md:px-margin-md lg:px-margin-lg">
-        <div className="mb-space-lg flex flex-wrap items-center justify-start gap-space-sm rtl:justify-end">
+        <div className="mb-space-lg flex flex-wrap max-[767px]:[visibility:hidden] items-center justify-start gap-space-sm rtl:justify-end">
           <div
             {...enter({ delay: 80 })}
             className="inline-flex items-center gap-space-xs  z-10 rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
@@ -31,7 +31,7 @@ export async function HeroSection() {
         </div>
 
         <div className="grid grid-cols-1 items-center gap-gutter-lg">
-          <div className="flex flex-col items-start pe-0 lg:col-span-7 lg:pe-space-md rtl:lg:col-start-6">
+          <div className="flex flex-col items-start pe-0 lg:col-span-7 lg:pe-space-md rtl:lg:col-start-1">
             <div className="relative">
               <h1
                 id="hero-title"
@@ -95,6 +95,7 @@ export async function HeroSection() {
 
       <div
         aria-hidden="true"
+        data-reveal="fade-in"
         className="hero-layers pointer-events-none rtl:scale-x-[-1] absolute bottom-0 aspect-1099/941 w-165 z-0 ltr:left-165 rtl:right-165 max-[850px]:relative max-[850px]:bottom-auto max-[850px]:!left-auto max-[850px]:!right-auto xl:px-4 ltr:xl:left-auto rtl:xl:right-auto ltr:xl:right-0 rtl:xl:left-0 max-[850px]:w-[80vw] max-[850px]:!mx-auto"
       >
         {HERO_LAYER_IMAGES.map((src) => {
@@ -111,6 +112,12 @@ export async function HeroSection() {
             />
           );
         })}
+      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 z-0 aspect-1099/941 w-screen max-w-none left-1/2 -translate-x-1/2 min-[851px]:left-auto min-[851px]:right-auto rtl:scale-x-[-1] min-[851px]:translate-x-0 min-[851px]:w-[850px] min-[851px]:max-w-[850px] min-[851px]:ltr:right-0 min-[851px]:rtl:left-0"
+      >
+        <Image src="/hero/1.svg" alt="" fill className="object-contain" />
       </div>
       <HeroImageReveal />
     </section>

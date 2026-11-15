@@ -15,6 +15,7 @@ import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { DecorativeBackground } from "@/components/shared/DecorativeBackground";
+import { ImageGalleryProvider } from "@/components/shared/ImageGallery";
 import { routing } from "@/i18n/routing";
 
 import "../globals.css";
@@ -168,18 +169,20 @@ export default async function LocaleLayout({
       </head>
       <body className="relative bg-brand-bg font-body text-body-md text-brand-text antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:inset-s-4 focus:top-4 focus:z-60 focus:rounded-full focus:bg-brand-dark-green focus:px-4 focus:py-2 focus:font-body focus:text-label-md focus:text-brand-white"
-          >
-            {tCommon("skipToContent")}
-          </a>
-          <DecorativeBackground />
-          <Header />
-          {children}
-          <Footer />
-          <ScrollReveal />
-          <WhatsAppButton />
+          <ImageGalleryProvider>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:inset-s-4 focus:top-4 focus:z-60 focus:rounded-full focus:bg-brand-dark-green focus:px-4 focus:py-2 focus:font-body focus:text-label-md focus:text-brand-white"
+            >
+              {tCommon("skipToContent")}
+            </a>
+            <DecorativeBackground />
+            <Header />
+            {children}
+            <Footer />
+            <ScrollReveal />
+            <WhatsAppButton />
+          </ImageGalleryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

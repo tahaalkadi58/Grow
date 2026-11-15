@@ -24,37 +24,6 @@ const waitForImages = async (images: HTMLImageElement[]) => {
   );
 };
 
-const waitForInView = async (element: HTMLElement) => {
-  if (typeof IntersectionObserver === "undefined") {
-    return;
-  }
-
-  const isInView = () => {
-    const rect = element.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    const vw = window.innerWidth || document.documentElement.clientWidth;
-    return rect.bottom > 0 && rect.right > 0 && rect.top < vh && rect.left < vw;
-  };
-
-  if (isInView()) {
-    return;
-  }
-
-  await new Promise<void>((resolve) => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          observer.disconnect();
-          resolve();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(element);
-  });
-};
-
 export function HeroImageReveal() {
   useEffect(() => {
     let cancelled = false;
@@ -65,10 +34,67 @@ export function HeroImageReveal() {
         document.querySelectorAll<HTMLImageElement>(".hero-layers .hero-layer")
       );
 
-      await Promise.all([
-        waitForImages(images),
-        wrapper ? waitForInView(wrapper) : Promise.resolve(),
-      ]);
+      const revealHeroAccents = () => {
+        if (cancelled) {
+          return;
+        }
+        document.documentElement.classList.add("hero-loaded");
+      };
+
+      const heroSection =
+        wrapper?.closest<HTMLElement>("section") ?? document.querySelector<HTMLElement>("section[aria-labelledby='hero-title']");
+
+      if (!heroSection || typeof IntersectionObserver === "undefined") {
+        revealHeroAccents();
+      } else {
+        const rect = heroSection.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top < vh && rect.bottom > 0) {
+          revealHeroAccents();
+        } else {
+          const accentObserver = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((entry) => entry.isIntersecting)) {
+                accentObserver.disconnect();
+                revealHeroAccents();
+              }
+            },
+            { threshold: 0.01 }
+          );
+          accentObserver.observe(heroSection);
+        }
+      }
+
+      const waitForRevealed = async (element: HTMLElement) => {
+        if (element.classList.contains("is-revealed")) {
+          return;
+        }
+
+        await new Promise<void>((resolve) => {
+          const observer = new MutationObserver(() => {
+            if (element.classList.contains("is-revealed")) {
+              observer.disconnect();
+              resolve();
+            }
+          });
+
+          observer.observe(element, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+
+          if (element.classList.contains("is-revealed")) {
+            observer.disconnect();
+            resolve();
+          }
+        });
+      };
+
+      if (wrapper) {
+        await waitForRevealed(wrapper);
+      }
+
+      await waitForImages(images);
 
       if (cancelled) {
         return;

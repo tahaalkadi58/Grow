@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
+import { GalleryImageTrigger } from '@/components/shared/ImageGallery';
 import { Button } from '@/components/ui/Button';
 import { ResilientImage } from '@/components/ui/ResilientImage';
 import { youthFocusTags } from '@/features/home/data/content';
@@ -45,16 +46,22 @@ export function EcosystemYouthPanel() {
         </div>
 
         <div className="relative mb-space-lg aspect-video overflow-hidden rounded-2xl border border-brand-bg-alt bg-brand-bg-alt shadow-sm">
-          <ResilientImage
+          <GalleryImageTrigger
             src={IMAGES.youth}
-            fallbackSrc={IMAGES.hero}
-            alt={t('imageAlt')}
-            fill
-            unoptimized
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute bottom-2 start-2 rounded-full bg-brand-text/90 px-3 py-1 font-body text-label-sm font-medium text-brand-white backdrop-blur-sm">
+            ariaLabel={t('imageAlt')}
+            className="relative block h-full w-full"
+          >
+            <ResilientImage
+              src={IMAGES.youth}
+              fallbackSrc={IMAGES.hero}
+              alt={t('imageAlt')}
+              fill
+              unoptimized
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
+          </GalleryImageTrigger>
+          <div className="pointer-events-none absolute bottom-2 start-2 z-10 rounded-full bg-brand-text/90 px-3 py-1 font-body text-label-sm font-medium text-brand-white backdrop-blur-sm">
             {t('imageCaption')}
           </div>
         </div>

@@ -459,6 +459,11 @@ html.reveal-fallback .hero-layer {
   animation: none !important;
 }
 
+html.js .hero-layers[data-reveal].is-revealed {
+  opacity: 1;
+  animation: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   /* Scroll reveal ------------------------------------------------------- */
   html.js [data-reveal] {
@@ -539,7 +544,7 @@ html.reveal-fallback .hero-layer {
   }
 
   /* Hero collage: entrance + continuous, desynchronised float ------------- */
-  html.js.hero-loaded .hero-layer {
+  html.js .hero-layers.is-revealed .hero-layer {
     animation-name: hero-layer-enter, hero-layer-float;
     animation-duration: var(--layer-duration, 1100ms), var(--layer-float-duration, 9s);
     animation-delay:
@@ -555,18 +560,18 @@ html.reveal-fallback .hero-layer {
   }
 
   /* The clock tower settles and stays static. */
-  html.js.hero-loaded .hero-layer-7 {
+  html.js .hero-layers.is-revealed .hero-layer-7 {
     animation-name: hero-layer-enter;
   }
 
   /* Per-layer hover feedback: lifts while hovered, returns on leave. */
-  html.js.hero-loaded .hero-layer {
+  html.js .hero-layers.is-revealed .hero-layer {
     transition:
       scale 260ms cubic-bezier(0.22, 1, 0.36, 1),
       translate 260ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  html.js.hero-loaded .hero-layer.is-vibrating {
+  html.js .hero-layers.is-revealed .hero-layer.is-vibrating {
     scale: 1.03;
     translate: 0 -4px;
   }

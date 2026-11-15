@@ -20,7 +20,6 @@ export const HERO_LAYER_IMAGES = [
   "/hero/3.png",
   "/hero/2.png",
   "/hero/1.png",
-  "/hero/1.svg",
 ] as const;
 
 export const CONTACT_LINKS = {
@@ -35,7 +34,11 @@ export const CONTACT_LINKS = {
 export const IMAGES = {
   hero: "/images/asset-1.jpg",
   portrait: "/images/asset-2.jpg",
-  youth:
-    "/images/asset-1.jpg",
+  youth: "/images/asset-1.jpg",
   logo: "/images/logo.png",
 } as const;
+
+export const ASSET_GALLERY_IMAGES = [
+  "/images/asset-1.jpg",
+  "/images/asset-2.jpg",
+] as const;
