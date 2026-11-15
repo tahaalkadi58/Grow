@@ -76,16 +76,10 @@ export function EcosystemSection() {
              'mx-auto max-w-3xl',
           )}
         >
-          <div
-            {...reveal({ variant: 'scale', delay: 70 })}
-            className={cn(view === 'youth' && 'hidden')}
-          >
+          <div className={cn(view === 'youth' && 'hidden')}>
             <EcosystemPlusPanel />
           </div>
-          <div
-            {...reveal({ variant: 'scale', delay: 70 })}
-            className={cn(view === 'plus' && 'hidden')}
-          >
+          <div className={cn(view === 'plus' && 'hidden')}>
             <EcosystemYouthPanel />
           </div>
         </div>

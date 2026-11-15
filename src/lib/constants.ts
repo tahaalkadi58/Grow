@@ -20,6 +20,7 @@ export const HERO_LAYER_IMAGES = [
   "/hero/3.png",
   "/hero/2.png",
   "/hero/1.png",
+  "/hero/1.svg",
 ] as const;
 
 export const CONTACT_LINKS = {

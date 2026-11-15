@@ -60,6 +60,24 @@ const ink = localFont({
   fallback: ["sans-serif"],
 });
 
+const arBold = localFont({
+  src: "../fonts/ArabicBold.ttf",
+  weight: "600",
+  style: "normal",
+  variable: "--font-arBold",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
+const palestine = localFont({
+  src: "../fonts/Palestine.ttf",
+  weight: "400",
+  style: "normal",
+  variable: "--font-palestine",
+  display: "swap",
+  fallback: ["sans-serif"],
+});
+
 type LocaleLayoutProps = {
   children: ReactNode;
   params: Promise<{ locale: string }>;
@@ -125,7 +143,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={dir}
       suppressHydrationWarning
-      className={`${syne.variable} ${tajawal.variable} ${surgena.variable} ${Cimo.variable} ${ink.variable}`}
+      className={`${syne.variable} ${tajawal.variable} ${surgena.variable} ${Cimo.variable} ${ink.variable} ${arBold.variable} ${palestine.variable}`}
     >
       <head>
         {/* Runs before first paint so the reveal system never flashes content. */}

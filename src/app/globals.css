@@ -102,12 +102,12 @@
 }
 
 :root {
-  --font-heading-app: var(--font-surgena), var(--font-syne), sans-serif;
+  --font-heading-app: var(--font-palestine), var(--font-surgena), var(--font-syne), sans-serif;
   --font-body-app: var(--font-syne), var(--font-tajawal), sans-serif;
 }
 
 html[lang="ar"] {
-  --font-heading-app: var(--font-tajawal), var(--font-syne), sans-serif;
+  --font-heading-app: var(--font-palestine), var(--font-arBold), var(--font-syne), sans-serif;
   --font-body-app: var(--font-tajawal), var(--font-syne), sans-serif;
 }
 
@@ -236,6 +236,10 @@ html[lang="ar"] {
   -webkit-text-fill-color: transparent;
 }
 
+html[lang="ar"] #hero-title {
+  font-family: var(--font-arBold), var(--font-tajawal), sans-serif !important;
+}
+
 /* "Growth" uses a dedicated font when provided; load it later and set --font-growth. */
 #hero-title .hero-title-growth {
   font-family: var(--font-growth, var(--font-ink, var(--font-cimo), var(--font-heading-app))) !important;
@@ -246,6 +250,10 @@ html[lang="ar"] {
   background-clip: initial;
   -webkit-text-fill-color: var(--color-brand-dark-orange);
   color: var(--color-brand-dark-orange);
+}
+
+html[lang="ar"] #hero-title .hero-title-growth {
+  font-family: var(--font-growth, var(--font-ink, var(--font-arBold), var(--font-tajawal), sans-serif)) !important;
 }
 
 /* Hero title accents: underline mask-reveal (L→R) and effect diagonal fade-in. */
@@ -563,24 +571,24 @@ html.reveal-fallback .hero-layer {
     translate: 0 -4px;
   }
 
-  /* Hero "Growth" accents: wait for their images, then reveal in sync. */
-  html.js.hero-loaded:not(.hero-growth-ready) .hero-growth-underline {
+  /* Hero "Growth" accents: reveal without image-load gating or delay. */
+  html.js .hero-growth-underline {
     clip-path: inset(0 100% 0 0);
   }
 
-  html.js.hero-loaded:not(.hero-growth-ready) .hero-growth-effect {
+  html.js .hero-growth-effect {
     opacity: 0;
     transform: translate(-36px, 36px);
   }
 
-  html.js.hero-loaded.hero-growth-ready .hero-growth-underline {
+  html.js.hero-loaded .hero-growth-underline {
     animation: hero-growth-underline-reveal 720ms cubic-bezier(0.22, 1, 0.36, 1)
-      900ms both;
+      0ms both;
   }
 
-  html.js.hero-loaded.hero-growth-ready .hero-growth-effect {
+  html.js.hero-loaded .hero-growth-effect {
     animation: hero-growth-effect-reveal 650ms cubic-bezier(0.22, 1, 0.36, 1)
-      1150ms both;
+      0ms both;
   }
 }
 

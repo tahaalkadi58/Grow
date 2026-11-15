@@ -15,16 +15,16 @@ export async function HeroSection() {
       className="relative z-10 w-full overflow-hidden bg-brand-bg pt-6"
     >
       <div className="relative z-10 mx-auto w-full max-w-350 px-margin md:px-margin-md lg:px-margin-lg">
-        <div className="mb-space-lg flex flex-wrap items-center justify-between gap-space-sm">
+        <div className="mb-space-lg flex flex-wrap items-center justify-start gap-space-sm rtl:justify-end">
           <div
             {...enter({ delay: 80 })}
-            className="inline-flex items-center gap-space-xs rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
+            className="inline-flex items-center gap-space-xs  rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
           >
             <span
               aria-hidden="true"
               className="h-2 w-2 animate-ping rounded-full bg-brand-dark-green"
             />
-            <span className="font-body text-label-sm font-bold uppercase tracking-wider">
+            <span className="font-body text-label-sm font-bold uppercase tracking-wider rtl:normal-case rtl:tracking-normal">
               {t("badge")}
             </span>
           </div>
@@ -36,13 +36,13 @@ export async function HeroSection() {
               <h1
                 id="hero-title"
                 {...enter({ delay: 200 })}
-                className="mb-space-lg font-display text-headline-xl leading-[1.08] tracking-tight text-brand-dark-green md:text-display-hero"
+                className="mb-space-lg font-display text-headline-xl leading-[1.3] tracking-tight text-brand-dark-green md:text-display-hero"
               >
                 {t("titleLine1Start")}{" "}
                 <span className="hero-title-growth text-brand-dark-orange relative">
                   <span
                     aria-hidden="true"
-                    className="hero-growth-effect absolute -right-10 -top-4 w-16 bg-center bg-cover aspect-254/310"
+                    className="hero-growth-effect absolute ltr:-right-10 rtl:-left-10 rtl:scale-x-[-1] rtl:-top-0 -top-4 w-16 bg-center bg-cover aspect-254/310"
                     style={{ backgroundImage: "url(/hero/growth/effect.png)" }}
                   ></span>
                   <span
@@ -97,6 +97,8 @@ export async function HeroSection() {
       >
         {HERO_LAYER_IMAGES.map((src) => {
           const layer = Number(src.replace(/\D/g, ""));
+          const layerClass =
+            src.endsWith("/1.svg") ? "hero-layer-1-svg" : `hero-layer-${layer}`;
 
           return (
             <Image
@@ -106,7 +108,7 @@ export async function HeroSection() {
               fill
               unoptimized
               sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 40vw, (min-width: 640px) 56vw, 74vw"
-              className={`hero-layer hero-layer-${layer} object-contain`}
+              className={`hero-layer ${layerClass} object-contain`}
             />
           );
         })}

@@ -24,6 +24,37 @@ const waitForImages = async (images: HTMLImageElement[]) => {
   );
 };
 
+const waitForInView = async (element: HTMLElement) => {
+  if (typeof IntersectionObserver === "undefined") {
+    return;
+  }
+
+  const isInView = () => {
+    const rect = element.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    return rect.bottom > 0 && rect.right > 0 && rect.top < vh && rect.left < vw;
+  };
+
+  if (isInView()) {
+    return;
+  }
+
+  await new Promise<void>((resolve) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          resolve();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(element);
+  });
+};
+
 export function HeroImageReveal() {
   useEffect(() => {
     let cancelled = false;
@@ -34,28 +65,16 @@ export function HeroImageReveal() {
         document.querySelectorAll<HTMLImageElement>(".hero-layers .hero-layer")
       );
 
-      await waitForImages(images);
+      await Promise.all([
+        waitForImages(images),
+        wrapper ? waitForInView(wrapper) : Promise.resolve(),
+      ]);
 
       if (cancelled) {
         return;
       }
 
       document.documentElement.classList.add("hero-loaded");
-
-      const growthImages = [
-        "/hero/growth/underline.png",
-        "/hero/growth/effect.png",
-      ].map((src) => {
-        const img = new Image();
-        img.src = src;
-        return img;
-      });
-
-      void waitForImages(growthImages).then(() => {
-        if (!cancelled) {
-          document.documentElement.classList.add("hero-growth-ready");
-        }
-      });
 
       if (!wrapper || images.length === 0) {
         return;
@@ -70,7 +89,10 @@ export function HeroImageReveal() {
 
       // Rasterize each layer once so we can hit-test transparent PNG areas and
       // resolve which overlapping layer is visually on top under the pointer.
-      const sources = images
+      const interactiveImages = images.filter(
+        (img) => !img.classList.contains("hero-layer-1-svg")
+      );
+      const sources = interactiveImages
         .map((img) => {
           const width = img.naturalWidth;
           const height = img.naturalHeight;

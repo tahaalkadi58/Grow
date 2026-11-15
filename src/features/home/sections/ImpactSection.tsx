@@ -42,7 +42,7 @@ export async function ImpactSection() {
             <article
               key={metric.id}
               {...staggerItem(index)}
-              className="flex flex-col justify-between rounded-3xl border border-brand-white/10 bg-brand-white/5 p-space-xl"
+              className="flex flex-col flex-start rounded-3xl border border-brand-white/10 bg-brand-white/5 p-space-xl"
             >
               <div
                 className={`mb-space-lg flex items-center justify-between ${metric.accentClassName}`}
