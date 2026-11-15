@@ -108,6 +108,7 @@ export async function HeroSection() {
               src={src}
               alt=""
               fill
+              sizes="(max-width: 850px) 80vw, 660px"
               className={`hero-layer ${layerClass} object-contain`}
             />
           );
@@ -117,7 +118,13 @@ export async function HeroSection() {
         aria-hidden="true"
         className="pointer-events-none absolute bottom-0 z-0 aspect-1099/941 w-screen max-w-none left-1/2 -translate-x-1/2 min-[851px]:left-auto min-[851px]:right-auto rtl:scale-x-[-1] min-[851px]:translate-x-0 min-[851px]:w-[850px] min-[851px]:max-w-[850px] min-[851px]:ltr:right-0 min-[851px]:rtl:left-0"
       >
-        <Image src="/hero/1.svg" alt="" fill className="object-contain" />
+        <Image
+          src="/hero/1.svg"
+          alt=""
+          fill
+          sizes="(max-width: 850px) 100vw, 850px"
+          className="object-contain"
+        />
       </div>
       <HeroImageReveal />
     </section>
