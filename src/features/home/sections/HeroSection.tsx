@@ -18,7 +18,7 @@ export async function HeroSection() {
         <div className="mb-space-lg flex flex-wrap items-center justify-start gap-space-sm rtl:justify-end">
           <div
             {...enter({ delay: 80 })}
-            className="inline-flex items-center gap-space-xs  rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
+            className="inline-flex items-center gap-space-xs  z-10 rounded-full bg-brand-bg-alt px-space-md py-1 text-brand-dark-green"
           >
             <span
               aria-hidden="true"
@@ -42,13 +42,15 @@ export async function HeroSection() {
                 <span className="hero-title-growth text-brand-dark-orange relative">
                   <span
                     aria-hidden="true"
-                    className="hero-growth-effect absolute ltr:-right-10 rtl:-left-10 rtl:scale-x-[-1] rtl:-top-0 -top-4 w-16 bg-center bg-cover aspect-254/310"
+                    className="hero-growth-effect absolute top-[-0.35em] w-[0.85em] aspect-254/310 bg-center bg-cover ltr:right-[-0.55em] rtl:left-[-0.55em] rtl:top-0 rtl:scale-x-[-1]"
                     style={{ backgroundImage: "url(/hero/growth/effect.png)" }}
                   ></span>
                   <span
                     aria-hidden="true"
                     className="hero-growth-underline absolute right-0 bottom-0 w-full bg-center bg-cover aspect-2172/724"
-                    style={{ backgroundImage: "url(/hero/growth/underline.png)" }}
+                    style={{
+                      backgroundImage: "url(/hero/growth/underline.png)",
+                    }}
                   ></span>
                   {t("titleGrowth")}
                 </span>
@@ -93,12 +95,11 @@ export async function HeroSection() {
 
       <div
         aria-hidden="true"
-        className="hero-layers pointer-events-none absolute bottom-0 left-165 aspect-1099/941 w-165 z-0 max-[850px]:relative max-[850px]:right-default max-[850px]:bottom-auto xl:px-4 max-[850px]:left-auto xl:left-auto xl:right-0 max-[850px]:w-[80vw] max-[850px]:m-auto"
+        className="hero-layers pointer-events-none rtl:scale-x-[-1] absolute bottom-0 aspect-1099/941 w-165 z-0 ltr:left-165 rtl:right-165 max-[850px]:relative max-[850px]:bottom-auto max-[850px]:!left-auto max-[850px]:!right-auto xl:px-4 ltr:xl:left-auto rtl:xl:right-auto ltr:xl:right-0 rtl:xl:left-0 max-[850px]:w-[80vw] max-[850px]:!mx-auto"
       >
         {HERO_LAYER_IMAGES.map((src) => {
           const layer = Number(src.replace(/\D/g, ""));
-          const layerClass =
-            src.endsWith("/1.svg") ? "hero-layer-1-svg" : `hero-layer-${layer}`;
+          const layerClass = `hero-layer-${layer}`;
 
           return (
             <Image
@@ -106,8 +107,6 @@ export async function HeroSection() {
               src={src}
               alt=""
               fill
-              unoptimized
-              sizes="(min-width: 1280px) 38vw, (min-width: 1024px) 40vw, (min-width: 640px) 56vw, 74vw"
               className={`hero-layer ${layerClass} object-contain`}
             />
           );

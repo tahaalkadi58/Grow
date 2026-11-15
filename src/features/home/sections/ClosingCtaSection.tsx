@@ -111,14 +111,14 @@ export async function ClosingCtaSection() {
                 {t('description')}
               </p>
 
-              <div className="flex flex-wrap items-center gap-space-md">
+              <div className="grid grid-cols-1 gap-space-md sm:items-center sm:max-[1027px]:grid-cols-2 min-[1280px]:grid-cols-2">
                 <Button
                   href={CONTACT_LINKS.whatsapp}
                   variant="orange"
                   size="lg"
                   icon="handshake"
                   lift
-                  className="w-full sm:w-auto"
+                  className="w-full max-w-[300px] max-[299px]:max-w-none min-[300px]:whitespace-nowrap"
                 >
                   {t('primaryCta')}
                 </Button>
@@ -128,7 +128,7 @@ export async function ClosingCtaSection() {
                   size="lg"
                   icon="volunteer_activism"
                   lift
-                  className="w-full sm:w-auto"
+                  className="w-full max-w-[300px] max-[299px]:max-w-none min-[300px]:whitespace-nowrap"
                 >
                   {t('secondaryCta')}
                 </Button>

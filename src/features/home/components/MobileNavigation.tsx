@@ -97,22 +97,7 @@ export function MobileNavigation() {
             aria-labelledby="mobile-navigation-title"
             className="absolute inset-y-0 end-0 flex h-screen w-full max-w-sm flex-col bg-brand-bg p-space-lg shadow-2xl"
           >
-            <div className="flex items-center justify-between gap-space-md border-b border-brand-bg-alt pb-space-md">
-              <h2
-                id="mobile-navigation-title"
-                className="font-display text-headline-sm font-extrabold text-brand-text"
-              >
-                {tCommon('menu.label')}
-              </h2>
-              <button
-                type="button"
-                onClick={closeMenu}
-                aria-label={tCommon('menu.close')}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-bg-alt text-brand-text transition-colors hover:bg-brand-bg-alt/80"
-              >
-                <Icon name="close" size={20} />
-              </button>
-            </div>
+            
 
             <nav
               aria-label={tCommon('primaryNavigation')}
